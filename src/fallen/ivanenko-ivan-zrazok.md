@@ -1,6 +1,6 @@
 ---
 name: Іваненко Іван Іванович (зразок)
-unit: bryhada-zrazok
+unit: src/units/bryhada-zrazok.md
 callsign: Дуб
 rank: солдат
 birth: 1987-03-12
