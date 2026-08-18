@@ -1,0 +1,52 @@
+# Локальний режим: запустіть `npm run dev` і відкрийте http://localhost:8080/admin/
+# Після створення репозиторію на GitHub замініть OWNER/REPO нижче.
+backend:
+  name: github
+  repo: OWNER/REPO
+  branch: main
+
+# Дозволяє редагувати локально без GitHub (працює через decap-server)
+local_backend: true
+
+locale: uk
+media_folder: "src/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: units
+    label: "Військові частини"
+    label_singular: "Військова частина"
+    folder: "src/units"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Назва частини", name: "title", widget: "string" }
+      - { label: "Порядок у списку", name: "order", widget: "number", value_type: "int", default: 100, required: false, hint: "Менше число — вище у списку" }
+      - { label: "Опис (необов'язково)", name: "body", widget: "markdown", required: false }
+
+  - name: fallen
+    label: "Полеглі воїни"
+    label_singular: "Воїн"
+    folder: "src/fallen"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    editor:
+      preview: false
+    fields:
+      - { label: "Прізвище, ім'я, по батькові", name: "name", widget: "string" }
+      - label: "Військова частина"
+        name: "unit"
+        widget: "relation"
+        collection: "units"
+        value_field: "{{slug}}"
+        search_fields: ["title"]
+        display_fields: ["title"]
+      - { label: "Позивний", name: "callsign", widget: "string", required: false }
+      - { label: "Звання", name: "rank", widget: "string", required: false }
+      - { label: "Дата народження", name: "birth", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false }
+      - { label: "Дата загибелі", name: "death", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false }
+      - { label: "Фотографія", name: "photo", widget: "image", required: false }
+      - { label: "Біографічна нотатка", name: "body", widget: "markdown" }

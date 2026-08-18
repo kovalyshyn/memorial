@@ -1,0 +1,309 @@
+/* UAF Memory — офіційний меморіальний шрифт ЗСУ (Дмитро Растворцев, CC BY-ND 4.0).
+   Самостійний хостинг: сайт не залежить від зовнішніх сервісів. */
+@font-face {
+  font-family: "UAF Memory";
+  src: url("../fonts/UAFMemory-Bold.woff2") format("woff2"),
+       url("../fonts/UAFMemory-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UAF Memory SC";
+  src: url("../fonts/UAFMemory-BoldSmallCaps.woff2") format("woff2"),
+       url("../fonts/UAFMemory-BoldSmallCaps.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Палітра: темна олива польової форми + латунь меморіальних табличок */
+:root {
+  --ink: #1c1f16;        /* тло — темна олива */
+  --surface: #252a1e;    /* картки */
+  --hairline: #3a4030;   /* тонкі лінії розділення */
+  --bone: #e8e4d8;       /* основний текст — кістяна білизна каменю */
+  --khaki: #9a9278;      /* другорядний текст */
+  --brass: #a98f4e;      /* акцент — латунь */
+  --brass-dim: #8a7440;
+
+  --display: "UAF Memory", Georgia, "Times New Roman", serif;
+  --display-sc: "UAF Memory SC", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 1.25rem;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+main, .site-header, .site-footer {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* Шапка */
+.site-header {
+  padding: 2.5rem 0 1.75rem;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 0.9rem;
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.header-emblem {
+  height: 3.4rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.site-title {
+  font-family: var(--display-sc);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-decoration: none;
+  display: block;
+  text-wrap: balance;
+}
+
+/* Подвійна латунна лінія — мотив гравіювання */
+.rule-double {
+  margin: 1.6rem auto 0;
+  width: 6rem;
+  border-top: 1px solid var(--brass-dim);
+  border-bottom: 1px solid var(--brass-dim);
+  height: 4px;
+}
+
+.rule-brass {
+  width: 3.5rem;
+  border-top: 1px solid var(--brass);
+  margin: 0.85rem 0;
+}
+
+/* Головна */
+.dedication {
+  color: var(--khaki);
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0.5rem 0 2.5rem;
+  text-wrap: pretty;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--khaki);
+  margin-bottom: 0.4rem;
+}
+
+.unit-list {
+  border-top: 1px solid var(--hairline);
+}
+
+.unit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 1.1rem 0.25rem;
+  min-height: 48px;
+  border-bottom: 1px solid var(--hairline);
+  text-decoration: none;
+}
+
+.unit-row:active { background: var(--surface); }
+
+@media (hover: hover) {
+  .unit-row:hover .unit-name { color: var(--brass); }
+}
+
+.unit-name {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: color 120ms ease;
+  margin-right: auto;
+}
+
+.unit-count {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--khaki);
+  flex-shrink: 0;
+}
+
+/* Сторінка частини */
+.back-link {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--khaki);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  margin-bottom: 0.75rem;
+}
+
+.back-link:hover { color: var(--brass); }
+
+.unit-title {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  text-wrap: balance;
+}
+
+.unit-description {
+  color: var(--khaki);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Стрічка карток */
+.feed {
+  margin-top: 2rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+}
+
+.portrait {
+  aspect-ratio: 3 / 4;
+  max-height: 30rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--brass-dim);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.plaque {
+  padding: 1.4rem 1.4rem 1.6rem;
+}
+
+.person-name {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.person-callsign {
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: var(--khaki);
+  margin-top: 0.3rem;
+}
+
+.person-dates {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--brass);
+}
+
+.person-rank {
+  font-size: 0.88rem;
+  color: var(--khaki);
+  margin-top: 0.35rem;
+}
+
+.person-bio {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.person-bio p + p { margin-top: 0.7rem; }
+
+.empty {
+  margin-top: 2rem;
+  color: var(--khaki);
+  text-align: center;
+}
+
+/* Підвал */
+.site-footer {
+  padding: 3rem 0 2.5rem;
+  text-align: center;
+}
+
+.site-footer .rule-double { margin-bottom: 1.4rem; }
+
+.site-footer p {
+  font-family: var(--display-sc);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--brass);
+  font-size: 1rem;
+}
+
+/* Планшет і більше: картка — фото ліворуч, табличка праворуч */
+@media (min-width: 640px) {
+  .site-title { font-size: 1.85rem; }
+  .header-emblem { height: 4.2rem; }
+  .site-brand { gap: 1.4rem; }
+
+  .card {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+  }
+
+  .portrait {
+    aspect-ratio: auto;
+    max-height: none;
+    border-bottom: none;
+    border-right: 1px solid var(--brass-dim);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

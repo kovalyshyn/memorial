@@ -1,0 +1,71 @@
+# Конфігурація Pages CMS (https://pagescms.org) — редагування контенту з браузера.
+media:
+  input: src/uploads
+  output: /uploads
+
+content:
+  - name: units
+    label: Військові частини
+    type: collection
+    path: src/units
+    view:
+      primary: title
+      fields: [title, order]
+    fields:
+      - name: title
+        label: Назва частини
+        type: string
+        required: true
+      - name: order
+        label: Порядок у списку (менше число — вище)
+        type: number
+        default: 100
+      - name: body
+        label: Опис (необов'язково)
+        type: rich-text
+
+  - name: fallen
+    label: Полеглі воїни
+    type: collection
+    path: src/fallen
+    view:
+      primary: name
+      fields: [name, unit, death]
+    fields:
+      - name: name
+        label: Прізвище, ім'я, по батькові
+        type: string
+        required: true
+      - name: unit
+        label: Військова частина
+        type: reference
+        required: true
+        options:
+          collection: units
+          search: "title"
+          value: "{path}"
+          label: "{primary}"
+      - name: callsign
+        label: Позивний
+        type: string
+      - name: rank
+        label: Звання
+        type: string
+      - name: birth
+        label: Дата народження
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+      - name: death
+        label: Дата загибелі
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+      - name: photo
+        label: Фотографія
+        type: image
+      - name: body
+        label: Біографічна нотатка
+        type: rich-text

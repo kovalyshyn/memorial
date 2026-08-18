@@ -1,0 +1,4 @@
+{
+  "layout": "unit.njk",
+  "permalink": "/units/{{ page.fileSlug }}/"
+}

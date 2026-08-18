@@ -1,0 +1,42 @@
+---
+layout: base.njk
+---
+<a class="back-link" href="{{ '/' | url }}">← Усі частини</a>
+
+<h1 class="unit-title">{{ title }}</h1>
+{% if content and content.trim() %}
+  <div class="unit-description">{{ content | safe }}</div>
+{% endif %}
+
+{% set persons = collections.fallen | withUnit(page.fileSlug) %}
+
+{% if persons.length %}
+<section class="feed" aria-label="Полеглі воїни">
+  {% for person in persons %}
+  <article class="card" id="{{ person.fileSlug }}">
+    <div class="portrait">
+      <img
+        src="{{ (person.data.photo or '/uploads/placeholder.svg') | url }}"
+        alt="Портрет: {{ person.data.name }}"
+        loading="lazy">
+    </div>
+    <div class="plaque">
+      <h2 class="person-name">{{ person.data.name }}</h2>
+      {% if person.data.callsign %}
+        <p class="person-callsign">позивний «{{ person.data.callsign }}»</p>
+      {% endif %}
+      <div class="rule-brass" aria-hidden="true"></div>
+      <p class="person-dates">
+        {{ person.data.birth | dateUA }}&nbsp;—&nbsp;{{ person.data.death | dateUA }}
+      </p>
+      {% if person.data.rank %}
+        <p class="person-rank">{{ person.data.rank }}</p>
+      {% endif %}
+      <div class="person-bio">{{ person.templateContent | safe }}</div>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+  <p class="empty">У цій частині ще немає записів. Додайте їх через розділ адміністрування.</p>
+{% endif %}
