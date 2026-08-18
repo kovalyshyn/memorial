@@ -2,7 +2,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/uploads");
-  eleventyConfig.addPassthroughCopy("src/admin");
+
+  // Локальна адмінка Decap потрібна лише для `npm run dev`.
+  // У CI задано PATH_PREFIX — тоді /admin не потрапляє в опублікований сайт.
+  if (process.env.PATH_PREFIX) {
+    eleventyConfig.ignores.add("src/admin/**");
+  } else {
+    eleventyConfig.addPassthroughCopy("src/admin");
+  }
 
   // 01.01.2000 → формат дат на табличках
   eleventyConfig.addFilter("dateUA", (value) => {
