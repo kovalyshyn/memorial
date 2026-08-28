@@ -22,12 +22,17 @@ export default function (eleventyConfig) {
   });
 
   // Поле unit може бути слагом ("bryhada-zrazok", так пише Decap)
-  // або шляхом ("src/units/bryhada-zrazok.md", так пише Pages CMS) — зводимо до слага.
+  // або шляхом ("src/units/2026-08-18-nazva.md", так пише Pages CMS).
+  // Eleventy у fileSlug відкидає датний префікс, тому відкидаємо його й тут.
   const unitKey = (v) =>
-    String(v || "").split("/").pop().replace(/\.md$/, "");
+    String(v || "")
+      .split("/")
+      .pop()
+      .replace(/\.md$/, "")
+      .replace(/^\d{4}-\d{2}-\d{2}-/, "");
 
   eleventyConfig.addFilter("withUnit", (fallen, unitSlug) =>
-    (fallen || []).filter((p) => unitKey(p.data.unit) === unitSlug)
+    (fallen || []).filter((p) => unitKey(p.data.unit) === unitKey(unitSlug))
   );
 
   eleventyConfig.addCollection("units", (api) =>
