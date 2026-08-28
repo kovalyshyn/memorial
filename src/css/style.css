@@ -209,18 +209,17 @@ main, .site-header, .site-footer {
   border: 1px solid var(--hairline);
 }
 
+/* Фото не обрізаємо: меморіальні портрети — цілісні композиції */
 .portrait {
-  aspect-ratio: 3 / 4;
-  max-height: 30rem;
-  overflow: hidden;
   border-bottom: 1px solid var(--brass-dim);
 }
 
 .portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: auto;
+  max-height: 36rem;
+  object-fit: contain;
 }
 
 .plaque {
@@ -293,12 +292,10 @@ main, .site-header, .site-footer {
 
   .card {
     display: grid;
-    grid-template-columns: 14rem 1fr;
+    grid-template-columns: 16rem 1fr;
   }
 
   .portrait {
-    aspect-ratio: auto;
-    max-height: none;
     border-bottom: none;
     border-right: 1px solid var(--brass-dim);
   }
