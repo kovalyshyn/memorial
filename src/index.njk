@@ -3,9 +3,9 @@ layout: base.njk
 ---
 <p class="dedication">{{ site.dedication }}</p>
 
-<h2 class="section-label">Військові частини</h2>
+<h2 class="section-label">{{ site.unitsLabel }}</h2>
 
-<nav class="unit-list" aria-label="Військові частини">
+<nav class="unit-list" aria-label="{{ site.unitsLabel }}">
   {% for unit in collections.units %}
     {% set persons = collections.fallen | withUnit(unit.fileSlug) %}
     <a class="unit-row" href="{{ unit.url | url }}">

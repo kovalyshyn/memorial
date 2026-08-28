@@ -69,3 +69,25 @@ content:
       - name: body
         label: Біографічна нотатка
         type: rich-text
+
+  - name: site
+    label: Тексти сайту
+    type: file
+    path: src/_data/site.json
+    fields:
+      - name: title
+        label: Назва меморіалу (шапка і заголовок вкладки)
+        type: string
+        required: true
+      - name: eyebrow
+        label: Напис над назвою
+        type: string
+      - name: dedication
+        label: Вступний текст на головній
+        type: text
+      - name: unitsLabel
+        label: Заголовок списку частин
+        type: string
+      - name: footer
+        label: Напис унизу сторінки
+        type: string
