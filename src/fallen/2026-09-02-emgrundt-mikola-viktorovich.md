@@ -1,5 +1,5 @@
 ---
-name: Емгрундт Микола Вікторович
+name: ЕМГРУНДТ Микола Вікторович
 unit: src/units/2026-08-18-hmelnickij-zonalnij-viddil-ztu-vsp-zsu.md
 rank: підполковник
 birth: 1986-11-24
