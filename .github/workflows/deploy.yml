@@ -26,9 +26,8 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          # Для сайту на <user>.github.io/<repo>/ префікс = ім'я репозиторію.
-          # Після підключення власного домену замініть на: PATH_PREFIX: /
-          PATH_PREFIX: /${{ github.event.repository.name }}/
+          # Сайт на власному домені memorial-ztu-vsp.pp.ua — корінь без префікса.
+          PATH_PREFIX: /
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
